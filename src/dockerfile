@@ -1,0 +1,28 @@
+FROM python:3.12
+
+# Instalar virtualenv
+RUN pip install virtualenv
+
+# Crear un entorno virtual
+RUN virtualenv /opt/venv
+
+# Establecer la variable de entorno para usar el entorno virtual
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN pip install "fastapi[standard]"
+
+# Crear directorio de trabajo
+WORKDIR /src
+
+# Copiar el archivo de requisitos
+COPY requirements.txt ./
+# Instalar las dependencias en el entorno virtual
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar el resto de la aplicación
+COPY . .
+
+CMD ["fastapi", "run", "main_api.py", "--port", "8000"]
+# CMD ["uvicorn", "main_api.py", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
