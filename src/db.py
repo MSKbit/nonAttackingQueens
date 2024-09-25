@@ -2,7 +2,7 @@
 
 from sqlalchemy import create_engine, MetaData, Table
 
-# Configura tu cadena de conexión
+# Configura la cadena de conexión
 DATABASE_URL = "postgresql+psycopg://postgres:admin@db:5432/Test"
 engine = create_engine(DATABASE_URL)
 

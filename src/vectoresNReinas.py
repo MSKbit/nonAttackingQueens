@@ -1,4 +1,4 @@
-# Upper bound: O(n!) time | O(n) space
+
 
 from coordenada import coordenada
 
@@ -8,18 +8,18 @@ arrSolucionTemp = []
 def obtenerResultados(numReinas):
     combinaciones = nonAttackingQueens(numReinas)
     strResultado = ''
-    # print("Resultado: " + str(combinaciones))
+
     for index, solucion in  enumerate(arrSolucion):
         tempSol = 'Solución: ' + str(index+1)
         strResultado += tempSol + '\\n'
-        # print(tempSol)
+
         for elem in solucion:
             tempString = 'Fila: ' + str(elem.fila) + ' | Columna: ' + str(elem.columna) +' '
             strResultado += tempString
-            # print(tempString)
+
         tempSol = '\\n\\n'
         strResultado += tempSol
-        # print(tempSol)
+
 
     return strResultado, combinaciones
 
@@ -45,8 +45,6 @@ def getNumberOfNonAttackingQueenPlacements(row, blockedColumns, blockedUpDiagona
             validPlacements += resultado
             if resultado>0 and len(arrSolucionTemp)==boardSize:
                 arrSolucion.append(arrSolucionTemp.copy())
-                # for solucion in arrSolucion:
-                #     print(solucion)
             removeQueen(row, col, blockedColumns, blockedUpDiagonals, blockedDownDiagonals)
 
     return validPlacements
